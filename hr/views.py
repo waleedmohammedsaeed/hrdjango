@@ -5,7 +5,7 @@ from django.forms import ValidationError
 # from django.http import Http404, JsonResponse
 from .models import Employee
 from .forms import EmployeeForm
-from django.core.exceptions import ObjectDoesNotExist
+# from django.core.exceptions import ObjectDoesNotExist
 
 
 
@@ -38,11 +38,9 @@ def import_data(request):
     return render(request, 'command_store.html')
 
 def getemployee(request):
-    try:
-        eno = request.POST.get('eno')
-        emp =  get_object_or_404(Employee, empno=eno)
-    except ObjectDoesNotExist:
-        pass
+    eno = request.POST.get('eno')
+    emp =  get_object_or_404(Employee, empno=eno)
+
     
     context = {'emp': emp}
     return render(request, 'employee.html', context)
