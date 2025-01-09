@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+<link rel="stylesheet" href="{% static 'css/hr/employees.css' %}">
+    <div class="header-items">
+        <a href="{% url 'hr:employees' %}"     class="newemp"> الموظفون</a>
+        <a href="{% url 'main:payroll' %}"     class="newemp"><li>الرواتب</li></a>
+        <a href="{% url 'main:jobs' %}"        class="newemp"><li>الوظائف</li></a>
+        <a href="{% url 'main:recruitment' %}" class="newemp"><li>التوظيف</li></a>
+    </div>
+    <div class="bg">
+            <div class="main-dashboard">
+                <h3>اللوحة الرئيسية</h3>
+            </div>
+    </div>
+{% endblock %}

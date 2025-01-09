@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+<link rel="stylesheet" href="{% static 'css/main/assignment.css' %}">
+<section class="container">
+    <section>
+        <div>
+            <div class="tab-box">
+                <button class='tab-btn active'>الموطفين المكلفين</button>
+                <button class='tab-btn'>قرارات التكليف المنتهية</button>
+                <button class='tab-btn'>عرض المباشرة بعد التكليف</button>
+                <div class="line"></div>
+            </div>
+            <div class="content-box">
+                <div class="content active ">
+                    <h2>الموطفين المكلفين</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Veniam perferendis quos doloribus qui molestias laboriosam nemo maiores quod.
+                        Optio, possimus quidem culpa nesciunt eius debitis nobis asperiores inventore
+                        laboriosam, rerum illo nisi ratione repellendus delectus iure dolorum provident
+                        neque ducimus corrupti soluta esse exercitationem. Praesentium maxime vel vero,
+                        quisquam doloremque minus ipsum voluptatum nam rerum esse doloribus? Minima
+                        officiis facere aut, asperiores deleniti cum laudantium quae sint ea impedit
+                        deserunt obcaecati, corrupti quisquam eius assumenda, tempora eveniet maxime! Ad
+                        blanditiis magnam, sequi possimus quaerat illum, at itaque voluptate labore autem
+                    </p>
+                </div>
+                <div class="content">
+                    <h2>قرارات التكليف المنتهية</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis corporis, laudantium veritatis dolore enim officia quam nihil impedit delectus ex!
+                    </p>
+                </div>
+                <div class="content">
+                    <h2>عرض المباشرة بعد التكليف</h2>
+                    <p>
+                        بيانات الموظفين المباشرين
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<script src="{% static 'js/assignment.js' %}"></script>
+
+
+{% endblock %}

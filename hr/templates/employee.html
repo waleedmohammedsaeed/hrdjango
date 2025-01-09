@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+<!--<link rel="stylesheet" href="{% static 'css/hr/employees.css' %}">-->
+<link rel="stylesheet" href="{% static 'css/hr/employees.css' %}">
+<a href="{% url 'hr:employees' %}">رجوع</a>
+<div class="list-group col-md-6 m-auto mt-3 mb-3">
+    <div class="list-group-item mb-2 d-flex column-gap-3">
+        <h6>الرقم</h6>
+        {{emp.empno}}</div>
+    <div class="list-group-item d-flex column-gap-3">
+        <h6>الاسم</h6>
+        {{emp.ename}}
+    </div>
+    <div class="list-group-item d-flex column-gap-3">
+        <h6>الجنسية</h6>
+        {{emp.nationality}}
+    </div>
+    <div class="list-group-item d-flex column-gap-3">
+        <h6>الوظيفة</h6>
+        {{emp.job_title}}
+    </div>
+    <div class="list-group-item d-flex column-gap-3">
+        <h6>المرتبة</h6>
+        {{emp.rank}}
+    </div>
+    <div class="list-group-item d-flex column-gap-3">
+        <h6>التخصص العام</h6>
+        {{emp.general_specialization}}
+    </div>
+    <div class="list-group-item d-flex column-gap-3">
+        <h6>جهة العمل الفعلية</h6>
+        {{emp.actual_work_side}}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock  %}

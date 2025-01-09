@@ -1,0 +1,63 @@
+.body{
+    min-height: 85vh;
+    display: grid;
+    place-items: center;
+}
+
+.myform{
+    width: 40%;
+    margin: auto auto;
+    list-style-type: none;
+    padding: 20px;
+    border-radius: 4px;
+    column-gap: 5px;
+}
+
+.myform button{
+    width: 100%;
+    background-color: steelblue;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: white;
+    margin: auto;
+}
+
+.myform input{
+    padding: 8px;
+    width: 100%;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+}
+
+@media screen (778) {
+    width: 40%
+}
+
+
+.bg{
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px 0;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+.btn-groups{
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid lightgray;
+    display: inline-block;
+    width: auto;
+}
+
+.table-st{
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+
+input:focus, textarea:focus, select:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}

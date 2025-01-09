@@ -1,0 +1,55 @@
+<div class="content">
+    <h2>Commands</h2>
+    <div class="list-item-group">
+        <div class="list-item">
+            <form action="{% url 'hr:import_actions' %}" method="POST">
+                {% csrf_token %}
+                <button type='submit'  class='btn-null'>import actions</button>
+            </form>
+        </div>
+        <div class="list-item">
+            <form action="{% url 'hr:import_area_side' %}" method="POST">
+                {% csrf_token %}
+                <button type='submit'  class='btn-null'>import area side</button>
+            </form>
+        </div>
+        <div class="list-item">
+            <form action="{% url 'hr:import_eclass' %}" method="POST">
+                {% csrf_token %}
+                <button type='submit'  class='btn-null'>import Eclass</button>
+            </form>
+        </div>
+        <div class="list-item">
+            <form action="{% url 'hr:import_general_specialization' %}" method="POST">
+                {% csrf_token %}
+                <button type='submit'  class='btn-null'>import general specialization</button>
+            </form>
+        </div>
+        <div class="list-item">
+            <form action="{% url 'hr:import_jobs' %}" method="POST">
+                {% csrf_token %}
+                <button type='submit'  class='btn-null'>import jobs</button>
+            </form>
+        </div>
+        <div class="list-item">
+            <form action="{% url 'hr:import_nationalities' %}" method="POST">
+                {% csrf_token %}
+                <button type='submit'  class='btn-null'>import nationalities</button>
+            </form>
+        </div>
+        <div class="list-item">
+            <form action="{% url 'hr:import_specialization' %}" method="POST">
+                {% csrf_token %}
+                <button type='submit'  class='btn-null'>import specialization</button>
+            </form>
+        </div>
+        <br>
+        <div class="list-item">
+            <form action="{% url 'hr:import_employees' %}" method="POST">
+                {% csrf_token %}
+                <button type='submit'  class='btn-null'>import employees</button>
+            </form>
+        </div>
+    </div>
+    </p>
+</div>

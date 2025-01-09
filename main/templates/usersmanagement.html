@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+<div class="bg" style="width: 90%; margin: auto; margin-top: 80px; direction: ltr">
+    <div style="display: flex; column-gap: 80px">
+        <a href="{% url 'accounts:change_password' %}"  style="text-decoration: none">Change password</a>
+        <a href="{% url 'accounts:register_user' %}"  style="text-decoration: none">Create new user</a>
+    </div>
+</div>
+{% endblock %}

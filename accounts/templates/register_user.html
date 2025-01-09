@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+<link rel="stylesheet" href="{% static 'css/hr/forms.css' %}">
+
+    <section class="myform" style="direction: ltr">
+    {{form.as_p}}
+    </section>
+{% endblock container %}

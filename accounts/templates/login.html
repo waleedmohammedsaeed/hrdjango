@@ -1,0 +1,28 @@
+
+
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+<link rel="stylesheet" href="{% static 'css/hr/forms.css' %}">
+<div class="body">
+    <section class="myform" style="direction: ltr">
+        <form action="login" method="post">
+            {% csrf_token %}
+            <div class="login-form">
+                {{form.as_p}}
+            </div>
+            <button type='submit' class="btn bg-primary my-2 text-white w-75 m-auto">Login</button>
+        </form>
+    </section>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.errorlist').forEach(function(errorList) {
+            errorList.style.display = 'none'; // Hide Django error messages
+        });
+    });
+</script>
+
+{% endblock container %}

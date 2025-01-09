@@ -1,0 +1,47 @@
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+__pycache__/
+
+media/
+static/
+
+# Local environment settings
+.env
+*.env
+*.local
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+
+exceldata
+
+
+# Django migrations
+*/migrations/*
+
+# Virtualenv
+venv/
+env/
+ENV/
+.venv/
+
+# VSCode, Sublime Text, and other editor settings
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# PyCharm
+.idea/

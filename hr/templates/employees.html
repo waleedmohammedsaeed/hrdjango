@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+<link rel="stylesheet" href="{% static 'css/hr/employees.css' %}">
+<div class="table-container">
+    <h1 style="text-align: center">الموارد البشرية</h1>
+    <h3 style="text-align: center">شؤون الموظفين</h3>
+    <div class="btn-groups d-flex justify-content-end gap-3" role="group" aria-label="Basic example">
+        <a href="{% url 'hr:newemployee' %}" type="button" class="btn btn-primary rounded-0">اضافة موظف</a>
+        {% if user.is_superuser %}
+            <a href="{% url 'hr:import_data' %}" style="line-height: 2">اضافة بيانات جاهزة</a>
+        {% endif %}
+        <a href="{% url 'main:hr' %}" class="btn text-primary" >رجوع</a>
+    </div>
+    <hr>
+    <div class="">
+        <form action="{% url 'hr:getemployee' %}" method="post">
+            {% csrf_token %}
+            <div class="search-control">
+                <input type="search" class="search-item form-control" placeholder="للبحث ادخل رقم الهوية / الاقامة" name="eno">
+            </div>
+        </form>
+        <table class="table table-sm table-bordered table-style">
+            <thead>
+            <tr class='text-center'>
+                {% comment %} <th scope="م" class="bg-secondary text-white">#</th> {% endcomment %}
+                <th scope="col" class="bg-secondary text-white">الرقم</th>
+                <th scope="col" class="bg-secondary text-white">الاسم</th>
+                <th scope="col" class="bg-secondary text-white">الجنسية</th>
+                <th scope="col" class="bg-secondary text-white">المرتبة</th>
+                <th scope="col" class="bg-secondary text-white">اخر واقعة</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for employee in employees %}
+            <tr>
+                {% comment %} <th scope="row">{{forloop.counter}}</th> {% endcomment %}
+                <td>{{employee.empno}}</td>
+                <td>{{employee.ename}}</td>
+                <td>{{employee.nationality }}</td>
+                <td>{{employee.rank }}</td>
+                <td>{{employee.last_action }}</td>
+            </tr>
+            {% endfor %}
+            <div aria-label="Page navigation example">
+
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1"  class="pagination-item right">&laquo; first</a>
+                        <a href="?page={{ page_obj.previous_page_number }}"  class="pagination-item right">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+<!--                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.-->
+                    </span>
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}"  class="pagination-item left">next</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}"  class="pagination-item left">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+            </div>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}
