@@ -9,5 +9,6 @@ urlpatterns = [
     path('assignment-approvement', views.assignment_main_hr_manager, name='assignment_main_hr_manager'),
     path('save_assignment', views.save_assignment, name='save_assignment'),
     path('approved', views.approved, name='approved'),
+    path('oneassigned/<int:id>/', views.oneassignedinfo, name='oneassignedinfo')
 
 ]

@@ -7,13 +7,13 @@
                 <div class="list-group col-md-6 m-auto">
                     <form action="approved" method="POST" class-"d-flex column-gap-5">
                         {% csrf_token %}
-                        <select  class="mb-3" style="25%; padding: 0 20px">
+                        <select  class="mb-3" style="25%; padding: 0 20px" name="appr">
                             <option value="2">اعتماد</option>
                             <option value="0">رفض</option>
                         </select>
                         <button type="submit" style="border: 1px solid gray; padding: 5px 30px; border-radius: 2px">تم</button>
                         {% for ns in nass %}
-                            <div class='d-flex list-group-item flex-column'>
+                            <a href="{% url 'assignment:oneassignedinfo' ns.id %}" class='d-flex list-group-item flex-column'>
                                 <div class="d-flex column-gap-3 ">
                                     {% if ns.state == 2 %}
                                         <input type="checkbox" name="approved_req" id="approved_req" value="{{ns.id}}" disabled>
@@ -32,7 +32,7 @@
                                 <div style="padding: 3px 30px">
                                     <div>{{ns.new_work}}</div>
                                 </div>
-                            </div>
+                            </a>
                         {% endfor %}
                     </form>
                 </div>

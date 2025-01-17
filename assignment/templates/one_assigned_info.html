@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block container %}
+    <section class="col-md-6 m-auto p-5 border border-loght rounded-sm m-5">
+        <div>
+            <div>الاسم</div>
+            {{one.employee.ename}}
+        </div>
+        <br>
+        <div>
+            <div>الجنسية</div>
+            {{one.employee.nationality}}
+        </div>
+        <br>
+        <div>
+            <div>رقم القرار</div>
+            {{one.decision_no}}
+        </div>
+        <br>
+        <div>
+            <div>تاريخ القرار</div>
+            {{one.decision_start_date}}
+        </div>
+        <br>
+        <div>
+            <div>العمل الحالي</div>
+            {{one.current_work}}
+        </div>
+        <br>
+        <div>
+            <div>العمل محل التكليف</div>
+            {{one.new_work}}
+        </div>
+        <br>
+        <div>
+            <div>تاريخ بداية العمل</div>
+            {{one.startwork}}
+        </div>
+        <br>
+        <div>
+            <div>رقم الوظيفة</div>
+            {{one.employee.job_id}}
+        </div>
+    </section>
+    {% endblock container %}
+

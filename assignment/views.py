@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.http import Http404
+from django.shortcuts import get_object_or_404, render, redirect
 from .forms import New_assignmentForm
 from hr.models import Employee
 from .models import New_assignment
@@ -31,7 +32,11 @@ def save_assignment(request):
 def newassignment(request):
     if request.method == 'POST':
         n = request.POST.get('num')
-        e = Employee.objects.get(empno=n)
+        try:
+            e = get_object_or_404(Employee, empno=n)
+        except Http404:
+            return render(request, 'page404.html')
+        
         initial_data = {
             'employee': e, 
             'current_work': e.actual_work_side,
@@ -47,13 +52,20 @@ def approved(request):
         # for approved, value in request.POST.items():
         #     print(f' items selected are {approved}={value}')
 
+        dec = request.POST.get('appr')
         ns = request.POST.getlist('approved_req')
         newass = New_assignment.objects.filter(id__in=ns)
+        print(dec)
         for nn in newass:
             if nn.state == 1:
-                nn.state = 2
+               nn.state = dec
+            
         New_assignment.objects.bulk_update(newass, ['state'])
 
         return redirect('/')
     else:
         return redirect('assignment_main_hr_manager')
+    
+def oneassignedinfo(request, id):
+    one = get_object_or_404(New_assignment, id=id)
+    return render(request, 'one_assigned_info.html', {'one': one})
