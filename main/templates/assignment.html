@@ -38,6 +38,29 @@
                         بيانات الموظفين المباشرين
 
                     </p>
+                    <div class="list-group col-md-6">
+                        {{sa}}
+                        {{sa.totals}}
+
+                        {% comment %} {% for s in sa %} {% endcomment %}
+                            {% comment %} <p>{{s.nationality}}</p> {% endcomment %}
+                        {% comment %} {% endfor %} {% endcomment %}
+
+                    {% for e in em %}
+                        <div class="list-group-item  d-flex justify-content-between">
+                            <div>{{e.eclass__className}}</div>  
+                            <div class="badge bg-success d-flex align-items-center">{{e.totals}}</div> 
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="list-group col-md-6 mt-5">
+                    {% for n in na %}
+                        <div class="list-group-item  d-flex justify-content-between">
+                            <div>{{n.nationality__nationality_name}}</div>  
+                            <div class="badge bg-success d-flex align-items-center">{{n.total}}</div> 
+                        </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

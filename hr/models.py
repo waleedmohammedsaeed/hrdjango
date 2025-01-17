@@ -64,7 +64,33 @@ class Actions(models.Model):
 
     def __str__(self):
         return self.action_name
+    
+#----------------------------------------------------------------
+class Actual_work_area(models.Model):
+    actual_work_area_name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.actual_work_area_name
+
+class Actual_work_side(models.Model):
+    actual_work_side_name = models.CharField(max_length=200)
+    actual_work_area = models.ForeignKey(Actual_work_area, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.actual_work_side_name
+    
+class Job_owner(models.Model):
+    Job_owner_name = models.CharField(max_length=60)
+
+    def __str__(self):
+        return self.Job_owner_name
+
+
+class Administrator_side(models.Model):
+    admin_name = models.CharField(max_length=80)
+
+    def __str__(self):
+        return self.admin_name
 
 class Employee(models.Model):
     JOB_TYPES = [
@@ -96,12 +122,12 @@ class Employee(models.Model):
     rank = models.ForeignKey(Specialization, on_delete=models.CASCADE, related_name="specialization", null=True, blank=True)
     general_specialization = models.ForeignKey(GeneralSpecialization, on_delete=models.CASCADE, related_name="generalspecialization", null=True, blank=True)
     job_id = models.CharField(max_length=20, null=True, blank=True)
-    job_owner = models.CharField(max_length=75, null=True, blank=True)
+    job_owner = models.ForeignKey(Job_owner, on_delete=models.CASCADE)
     owner_side = models.CharField(max_length=75, null=True, blank=True)
-    actual_work_area = models.CharField(max_length=75, null=True, blank=True)
-    actual_work_side = models.CharField(max_length=100, null=True, blank=True)
+    actual_work_area = models.ForeignKey(Actual_work_area, on_delete=models.CASCADE)
+    actual_work_side = models.ForeignKey(Actual_work_side, on_delete=models.CASCADE)
     area_side_type = models.ForeignKey(Area_side, on_delete=models.CASCADE, null=True, blank=True)
-    adminstrator = models.CharField(max_length=90, null=True, blank=True)
+    adminstrator = models.ForeignKey(Administrator_side, on_delete=models.CASCADE)
     lastAction_date = models.CharField(max_length=20, null=True, blank=True)
     last_action = models.ForeignKey(Actions, on_delete=models.CASCADE, null=True, blank=True)
     manager_name = models.CharField(max_length=75, null=True, blank=True)
@@ -130,8 +156,3 @@ class Employee(models.Model):
     #     hijri_date = islamic.from_gregorian(gregorian_date.year, gregorian_date.month, gregorian_date.day)
     #     return f"{hijri_date[2]}-{hijri_date[1]}-{hijri_date[0]}"
 
-
-
-from django.db import models
-
-# Create your models here.

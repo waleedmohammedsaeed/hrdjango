@@ -14,9 +14,14 @@
     <nav class="navbar px-4">
         <a href="{% url 'main:main' %}"  class="title" style="text-decoration: none"><h1>لوحة التحكم</h1></a>
         {% if user.is_authenticated %}
+
         <ul>
             <a href="{% url 'main:hr' %}"><li>الموارد البشرية</li></a>
-            <a href="{% url 'main:assignment' %}"><li>التكليف</li></a>
+            {% if request.user.username == "manager"  %}
+                <a href="{% url 'assignment:assignment_main_hr_manager' %}"><li>التكليف</li></a>
+            {% elif request.user.username == "musa" %}
+                <a href="{% url 'assignment:assignment' %}"><li>التكليف</li></a>
+            {% endif %}
             <a href="{% url 'main:usersmanagement' %}"><li>ادارة المستخدمين</li></a>
         </ul>
         {% endif %}

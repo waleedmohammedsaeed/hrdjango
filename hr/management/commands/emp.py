@@ -1,6 +1,6 @@
 import pandas as pd
 from django.core.management.base import BaseCommand
-from hr.models import Employee, Eclass, Nationality, Job, Specialization, GeneralSpecialization, Area_side, Actions
+from hr.models import Employee, Eclass, Nationality, Job, Specialization, GeneralSpecialization, Area_side, Actions, Actual_work_area, Actual_work_side, Job_owner, Administrator_side
 from django.conf import settings
 import os
 
@@ -27,6 +27,12 @@ class Command(BaseCommand):
             gs = GeneralSpecialization.objects.get(id=row['general_specialization'])
             ast = Area_side.objects.get(id=row['area_side_type'])
             la = Actions.objects.get(id=row['last_action'])
+
+            awa = Actual_work_area.objects.get(id=row['actual_work_area'])
+            aws = Actual_work_side.objects.get(id=row['actual_work_side'])
+            jow = Job_owner.objects.get(id=row['job_owner'])
+            asd = Administrator_side.objects.get(id=row['adminstrator'])
+            
             Employee.objects.create(
                 emptype = row['emptype'],
                 jobtype  = row['jobtype'],
@@ -43,12 +49,12 @@ class Command(BaseCommand):
                 rank = rk,
                 general_specialization = gs,
                 job_id = row['job_id'],
-                job_owner = row['job_owner'],
+                job_owner = jow,
                 owner_side = row['owner_side'],
-                actual_work_area = row['actual_work_area'],
-                actual_work_side = row['actual_work_side'],
+                actual_work_area = awa,
+                actual_work_side = aws,
                 area_side_type = ast,
-                adminstrator = row['adminstrator'],
+                adminstrator = asd,
                 lastAction_date = row['last_action_date'],
                 last_action = la,
                 manager_name = row['manager_name'],

@@ -1,0 +1,40 @@
+{% extends "base.html"  %}
+{% load static %}
+{% block container %}
+<link rel="stylesheet" href="{% static 'css/assignment/assignment.css' %}">
+    <section class="main-body">
+            <div>
+                <a href="{% url 'assignment:newassignment' %}" class="btn btn-primary rounded-0 px-3 py-1"> + تكليف جديد</a>
+            </div>
+            <main>
+                <div class="list-group">
+                    {% for as in ass %}
+                    <div class="list-group-item w-75 m-auto bg-light">
+                            <div class="emp-2">
+                                <div>
+                                    {% comment %} <p>الموظف</p> {% endcomment %}
+                                    <div style="font-weight: bold">{{as.employee}}</div>
+                                </div>
+                                <div>
+                                    <p style="display: inline-block; px-5">رقم القرار</p>
+                                    <div style="display: inline-block; font-weight: bold">{{as.decision_no}}</div>
+                                </div>
+                            </div>
+                            <div class="emp-2">
+                                <div class='d-flex justify-content'>
+                                    <p style="padding-left: 9px">جهة التكليف</p>
+                                    <div style="font-weight: bold">{{as.new_work}}</div>
+                                </div>
+                            </div>
+                            <div class="d-flex column-gap-3">
+                               <p>تاريخ القرار</p>
+                               <div style="font-weight: bold">{{as.decision_start_date}}</div>
+                           </div>
+                        {% comment %} </div> {% endcomment %}
+                    
+                    </div> 
+                {% endfor %}
+                </div>
+            </main>
+    </section>
+{% endblock container %}

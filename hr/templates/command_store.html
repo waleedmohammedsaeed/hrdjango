@@ -43,6 +43,28 @@
                 <button type='submit'  class='btn-null'>import specialization</button>
             </form>
         </div>
+
+
+        <div class="list-item">
+            <form action="{% url 'hr:import_actual_work_side' %}" method="POST">
+                {% csrf_token %}
+                <button type='submit'  class='btn-null'>import actual work side</button>
+            </form>
+        </div>
+        <div class="list-item">
+            <form action="{% url 'hr:import_administrator' %}" method="POST">
+                {% csrf_token %}
+                <button type='submit'  class='btn-null'>import Adminstratior</button>
+            </form>
+        </div>
+        <div class="list-item">
+            <form action="{% url 'hr:import_Job_owner' %}" method="POST">
+                {% csrf_token %}
+                <button type='submit'  class='btn-null'>import JOb Owner</button>
+            </form>
+        </div>
+
+
         <br>
         <div class="list-item">
             <form action="{% url 'hr:import_employees' %}" method="POST">

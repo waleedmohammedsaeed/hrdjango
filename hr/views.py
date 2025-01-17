@@ -30,7 +30,7 @@ def save_emp(request):
             else:
                 print(eform.errors)
         except ValidationError as ve:
-            raise exception.ValidationError
+            raise ValidationError(ve)
     return redirect('/')
 
 def import_data(request):

@@ -20,6 +20,10 @@ urlpatterns = [
     path('import_jobs', viewsimportdata.import_jobs, name='import_jobs'),
     path('import_nationalities', viewsimportdata.import_nationalities, name='import_nationalities'),
     path('import_specialization', viewsimportdata.import_specialization, name='import_specialization'),
+    
+    path('import_actual_work_side', viewsimportdata.import_actual_work_side, name='import_actual_work_side'),
+    path('import_administrator', viewsimportdata.import_administrator, name='import_administrator'),
+    path('import_Job_owner', viewsimportdata.import_Job_owner, name='import_Job_owner'),
 
     path('import_employees', viewsimportdata.import_employees, name='import_employees'),
 ]

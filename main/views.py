@@ -1,9 +1,10 @@
 from django.shortcuts import render
+from django.db.models import Count
+from hr.models import Eclass, Employee, Nationality
 # from .account.models import CustomUser
 
  #Create your views here.
 def main(request):
-    # userr = CustomUser.objects.get(username=request.user)
     return render(request, 'mainpage.html')
 
 def hr(request):
@@ -13,7 +14,15 @@ def payroll(request):
     return render(request, 'payroll.html')
 
 def assignment(request):
-    return render(request, 'assignment.html')
+    sa = Employee.objects.filter(nationality=4).aggregate(totals=Count('nationality'))
+    em = Employee.objects.values('eclass__className').annotate(totals=Count('eclass'))
+    na = Employee.objects.values('nationality__nationality_name').annotate(total=Count('nationality'))
+    context={
+        'em': em,
+        'na': na,
+        'sa': sa,
+    }
+    return render(request, 'assignment.html', context)
 
 def jobs(request):
     return render(request, 'jobs.html')

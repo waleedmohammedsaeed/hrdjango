@@ -1,0 +1,14 @@
+{% extends "base.html"  %}
+
+{% block container %}
+<div class="d-flex justify-content-center align-items-center bg-light" style='height: 500px'>
+    <div class="card p-5">
+        <form action="{% url 'assignment:newassignment' %}" method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="enter number" name="num"  />
+            <button type="submit" class='btn btn-primary text-white rounded-0'>enter</button>
+        </form>
+    </div>
+</div>
+    {% comment %} <a href="{% url 'assignment:newassignment' %}">تكليف جديد</a> {% endcomment %}
+{% endblock container %}

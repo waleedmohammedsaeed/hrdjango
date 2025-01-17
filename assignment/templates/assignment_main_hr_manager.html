@@ -1,0 +1,41 @@
+{% extends "base.html"  %}
+{% load static %}
+{% block container %}
+<link rel="stylesheet" href="{% static 'css/assignment/assignment.css' %}">
+    <section class="main-body">
+            <main>
+                <div class="list-group col-md-6 m-auto">
+                    <form action="approved" method="POST" class-"d-flex column-gap-5">
+                        {% csrf_token %}
+                        <select  class="mb-3" style="25%; padding: 0 20px">
+                            <option value="2">اعتماد</option>
+                            <option value="0">رفض</option>
+                        </select>
+                        <button type="submit" style="border: 1px solid gray; padding: 5px 30px; border-radius: 2px">تم</button>
+                        {% for ns in nass %}
+                            <div class='d-flex list-group-item flex-column'>
+                                <div class="d-flex column-gap-3 ">
+                                    {% if ns.state == 2 %}
+                                        <input type="checkbox" name="approved_req" id="approved_req" value="{{ns.id}}" disabled>
+                                    {% else %}
+                                        <input type="checkbox" name="approved_req" id="approved_req" value="{{ns.id}}">
+                                    {% endif %}
+                                    <div class="d-flex justify-content-between w-100">
+                                        <div>{{ns.employee}}</div>
+                                        <div>
+                                            {% if ns.state == 2 %}
+                                                <div class="badge bg-success">معتمد</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    </div>
+                                <div style="padding: 3px 30px">
+                                    <div>{{ns.new_work}}</div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </form>
+                </div>
+            </main>
+    </section>
+{% endblock container %}

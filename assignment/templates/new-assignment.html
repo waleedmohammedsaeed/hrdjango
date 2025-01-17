@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+<link rel="stylesheet" href="{% static 'css/hr/employees.css' %}">
+
+<div class="row">
+    <div class="col-md-9 m-auto my-4 card p-4">
+        <form action="save_assignment" method="POST">
+            {% csrf_token %}
+            <div>
+                <label for="" class="form-label">الموظف</label>
+                {{assignmentform.employee}}
+            </div>
+            <br>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <label for="" class="form-label">رقم القرار</label>
+                    {{assignmentform.decision_no}}
+                </div>
+                <br>
+                <div>
+                    <label for="" class="form-label">تاريخ القرار</label>
+                    {{assignmentform.decision_start_date}}
+                </div>
+            </div>
+            <br>
+            <div>
+                <label for="" class="form-label">العمل الحالي</label>
+                {{assignmentform.current_work}}
+            </div>
+            <br>
+            <div>
+                <label for="" class="form-label">العمل محل التكليف</label>
+                {{assignmentform.new_work}}
+            </div>
+            <br>
+            <div>
+                {{assignmentform.user}}
+            </div>
+            <br>
+            <button type="submit" class="rounded-0 btn btn-primary">حفظ</button>
+            <button type="" class="rounded-0 btn btn-secondary">الغاء</button>
+        </form>
+    </div>
+</div>
+{% endblock container %}
+
+
+{% comment %} 
+<section class="newempform">
+    <h2 class="text-primary pb-3">        موظف جديد    </h2>
+    <div class="inputs layouts">
+        <form action="save_emp" method="POST">
+            {% csrf_token %}
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="" class="form-label">نوع الموظف</label>
+                    {{eform.emptype}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">نوع الوظيفة</label>
+                    {{eform.jobtype}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">رقم الهوية</label>
+                    {{eform.identity}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">فئة الموظف</label>
+                    {{eform.eclass}}
+                </div>
+                <div class="col-md-3">
+                    <label for="" class="form-label">رقم الموظف</label>
+                    {{eform.empno}}
+                </div>
+                <div class="col-md-9">
+                    <label for="" class="form-label">اسم الموظف</label>
+                    {{eform.ename}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">رقم الجوال</label>
+                    {{eform.telNo}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">البريد الالكتروني</label>
+                    {{eform.email}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">الجنسية</label>
+                    {{eform.nationality}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">الجنس</label>
+                    {{eform.sex}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">تاريخ الميلاد</label>
+                    {{eform.bdate}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">مسمي الوظيفة</label>
+                    {{eform.job_title}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">اسم المرتبة</label>
+                    {{eform.rank}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">التخصص العام</label>
+                    {{eform.general_specialization}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">رقم الوظيفة</label>
+                    {{eform.job_id}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">ملاك المنطقة للوظيفة</label>
+                    {{eform.job_owner}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">جهة الملاك للوظيفة</label>
+                    {{eform.owner_side}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">منطقة العمل الفعلية</label>
+                    {{eform.actual_work_area}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">جهة العمل الفعلية</label>
+                    {{eform.actual_work_side}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">اسم نوع الجهة</label>
+                    {{eform.area_side_type}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">اسم المسير</label>
+                    {{eform.adminstrator}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">تاريخ اخر واقعة</label>
+                    {{eform.lastAction_date}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">اسم اخر واقعة</label>
+                    {{eform.last_action}}
+                </div>
+                <div>
+                    <label for="" class="form-label">اسم المدير</label>
+                    {{eform.manager_name}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">تاريخ الالتحاق بالوزارة</label>
+                    {{eform.ministry_attachment}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">تاريخ التعيين</label>
+                    {{eform.hire_date}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">تاريخ الالتحاق بالدولة</label>
+                    {{eform.country_attachement_date}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">حالة مطابقة الملاك لجهة العمل</label>
+                    {{eform.owner_status}}
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">نوع نهاية الخدمة</label>
+                    {{eform.service_type}}
+                </div>
+            </div>
+            <div class="btns-align">
+                <button type="submit" class=" mt-3 btn btn-primary w-75">save</button>
+                <button href="{% url 'hr:employees' %}" class="btn btn-secondary">الغاء</button>
+            </div>
+
+        </form>
+    </div>
+</section>
+
+
+{% endblock  %} {% endcomment %}

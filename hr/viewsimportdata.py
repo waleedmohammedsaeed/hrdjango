@@ -89,7 +89,46 @@ def import_specialization(request):
         redirect('/')
     return render(request, 'homepage.html')
 
+#----------------------------------------------------------------
 
+def import_actual_work_side(request):
+    if request.method == 'POST':
+        try:
+            call_command('actual_work_side')
+            messages.success(request, "successfully imported")
+        except Exception as e:
+            messages.error(request, f'ERROR importing {e}')
+        return redirect('/')
+    else:
+        redirect('/')
+    return render(request, 'homepage.html')
+
+
+def import_administrator(request):
+    if request.method == 'POST':
+        try:
+            call_command('administrator')
+            messages.success(request, "successfully imported")
+        except Exception as e:
+            messages.error(request, f'ERROR importing {e}')
+        return redirect('/')
+    else:
+        redirect('/')
+    return render(request, 'homepage.html')
+
+def import_Job_owner(request):
+    if request.method == 'POST':
+        try:
+            call_command('Job_owner')
+            messages.success(request, "successfully imported")
+        except Exception as e:
+            messages.error(request, f'ERROR importing {e}')
+        return redirect('/')
+    else:
+        redirect('/')
+    return render(request, 'homepage.html')
+
+#----------------------------------------------------------------
 def import_employees(request):
     if request.method == 'POST':
         try:
